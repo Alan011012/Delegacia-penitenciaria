@@ -5,13 +5,13 @@
     <h2 class="mt-9 text-3xl text-white font-semibold mb-6">Lista de Presos</h2>
 
     <a href="{{ route('presos.create') }}"
-        class="mt-3 inline-block bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300">
+        class="mt-3 inline-block bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">
         Adicionar Novo Preso
     </a>
 
     <div class="overflow-x-auto mt-8">
-        <table class="min-w-full bg-white text-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <thead class="bg-gray-600 text-white rounded-t-lg">
+        <table class="min-w-full bg-black text-white rounded-lg shadow-xl overflow-hidden">
+            <thead class="bg-gray-600 text-white">
                 <tr>
                     <th class="px-6 py-3 text-left text-sm font-semibold">ID</th>
                     <th class="px-6 py-3 text-left text-sm font-semibold">Nome</th>
@@ -23,21 +23,21 @@
                     <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
                 </tr>
             </thead>
-            <tbody class="bg-gray-300">
+            <tbody class="bg-gray-700">
                 @foreach ($presos as $preso)
-                    <tr class="hover:bg-gray-200 border-b border-gray-200 rounded-lg">
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">{{ $preso->id }}</td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">{{ $preso->nome }}</td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">
+                    <tr class="hover:bg-gray-600 transition duration-300 ease-in-out">
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->id }}</td>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->nome }}</td>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
                             {{ \Carbon\Carbon::parse($preso->data_nascimento)->format('d/m/Y') }}
                         </td>
-                        <td class="px-6 py-4 text-sm max-w-xs overflow-hidden text-ellipsis whitespace-nowrap bg-gray-100" style="max-width: 150px;">
+                        <td class="px-6 py-4 text-sm max-w-xs overflow-hidden text-ellipsis whitespace-nowrap bg-gray-800" style="max-width: 150px;">
                             {{ $preso->crime }}
                         </td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
                             {{ \Carbon\Carbon::parse($preso->data_condenacao)->format('d/m/Y') }}
                         </td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
                             <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full
                                 {{ trim($preso->status) == 'Fugido'
                                     ? 'bg-red-500 text-white'
@@ -49,11 +49,11 @@
                                 {{ $preso->status }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">{{ $preso->cela->nome ?? 'Não atribuída' }}</td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-100">
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->cela->nome ?? 'Não atribuída' }}</td>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
                             <div class="flex space-x-2">
                                 <a href="{{ route('presos.edit', $preso->id) }}"
-                                    class="text-black hover:text-blue-700 font-semibold transition duration-300">Editar</a>
+                                    class="text-blue-500 hover:text-blue-700 font-semibold transition duration-300">Editar</a>
                                 <span class="text-gray-400">|</span>
                                 <button onclick="openDeleteModal({{ $preso->id }})"
                                     class="text-red-500 hover:text-red-700 font-semibold transition duration-300">Excluir</button>

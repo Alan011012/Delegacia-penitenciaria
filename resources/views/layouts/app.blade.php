@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Presos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEJv+M9pDHT9j9hPkQeR8eF5Y6OZ1bt7xXReHgfe6gtzzYaY0O5D9g4EuyVFM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-black"> <!-- Cor de fundo alterada para bg-black -->
+<body class="bg-black text-white">
 
     <!-- Navbar -->
-    <nav class="bg-black text-white shadow-md fixed w-full z-10 top-0">
-        <div class="flex justify-between items-center p-4">
-            <h2 class="text-lg font-semibold text-white">Delegacia</h2>
-            <button class="lg:hidden text-white" x-data="{}" @click="$store.sidebar.toggle">
+    <nav class="bg-black text-white shadow-md fixed w-full z-10 top-0 border-b border-gray-700">
+        <div class="flex justify-between items-center p-4 px-6">
+            <h2 class="text-xl font-bold text-yellow-400">Delegacia</h2>
+            <button class="lg:hidden text-white">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
@@ -26,41 +23,39 @@
 
     <div class="flex">
         <!-- Sidebar -->
-        <div class="w-64 h-screen bg-black text-white fixed top-0 left-0 shadow-xl">
+        <div class="w-64 h-screen bg-black text-white fixed top-0 left-0 pt-16 border-r border-gray-800">
             <div class="px-6 py-4 border-b border-gray-800">
-                <h2 class="text-lg font-semibold text-center text-yellow-400">Delegacia</h2>
+                <h2 class="text-lg font-semibold text-center text-yellow-400">Painel Administrativo</h2>
             </div>
-            <div class="space-y-6 mt-8">
-                <!-- Links da sidebar -->
-                <a href="{{ route('dashboard') }}" class="flex items-center py-3 px-4 text-sm text-gray-200 hover:bg-gray-700 hover:text-white-500 rounded-md transition duration-200 ease-in-out">
-                    Inicio
+            <div class="space-y-4 mt-6 px-4">
+                <a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded-md text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition">
+                    Início
                 </a>
-                <a href="{{ route('presos.index') }}" class="flex items-center py-3 px-4 text-sm text-gray-200 hover:bg-gray-700 hover:text-white-500 rounded-md transition duration-200 ease-in-out">
+                <a href="{{ route('presos.index') }}" class="block py-2 px-4 rounded-md text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition">
                     Presos
                 </a>
-                <a href="{{ route('celas.index') }}" class="flex items-center py-3 px-4 text-sm text-gray-200 hover:bg-gray-700 hover:text-white-500 rounded-md transition duration-200 ease-in-out">
+                <a href="{{ route('celas.index') }}" class="block py-2 px-4 rounded-md text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition">
                     Celas
                 </a>
-                <a href="{{ route('visitas.index') }}" class="flex items-center py-3 px-4 text-sm text-gray-200 hover:bg-gray-700 hover:text-white-500 rounded-md transition duration-200 ease-in-out">
+                <a href="{{ route('visitas.index') }}" class="block py-2 px-4 rounded-md text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition">
                     Visitas
                 </a>
-                <a href="{{ route('visitantes.index') }}" class="flex items-center py-3 px-4 text-sm text-gray-200 hover:bg-gray-700 hover:text-white-500 rounded-md transition duration-200 ease-in-out">
+                <a href="{{ route('visitantes.index') }}" class="block py-2 px-4 rounded-md text-gray-300 hover:text-yellow-400 hover:bg-gray-800 transition">
                     Visitantes
                 </a>
             </div>
         </div>
 
-        <!-- Conteúdo Principal com Linha Separadora -->
-        <div class="flex-1 ml-64 p-6 overflow-y-auto border-l border-gray-400">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                <!-- Conteúdo do Dashboard -->
-            </div>
-
-            @yield('content') <!-- Conteúdo do layout -->
-        </div>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 ml-64 pt-20 pb-20 px-6 bg-black min-h-screen border-l border-gray-700">
+            @yield('content')
+        </main>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Rodapé fixo -->
+    <footer class="fixed bottom-0 left-64 right-0 bg-gray-900 border-t border-gray-700 text-center text-sm text-gray-400 py-3 z-10">
+        &copy; {{ now()->year }} Sistema de Gestão Penitenciária — Todos os direitos reservados.
+    </footer>
 
+</body>
 </html>
