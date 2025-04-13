@@ -20,4 +20,4 @@ class CreateVisitantesTable extends Migration
         Schema::dropIfExists('visitantes');
     }
 }
-?>
+
