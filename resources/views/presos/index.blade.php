@@ -25,7 +25,7 @@
             </thead>
             <tbody class="bg-gray-700">
                 @foreach ($presos as $preso)
-                    <tr class="hover:bg-gray-600 transition duration-300 ease-in-out">
+                    <tr class="hover:bg-gray-500 transition duration-300 ease-in-out">
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->id }}</td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->nome }}</td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
@@ -51,7 +51,7 @@
                         </td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $preso->cela->nome ?? 'Não atribuída' }}</td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
-                            <div class="flex space-x-2">
+                            <div class="flex space-x-3">
                                 <a href="{{ route('presos.edit', $preso->id) }}"
                                     class="text-blue-500 hover:text-blue-700 font-semibold transition duration-300">Editar</a>
                                 <span class="text-gray-400">|</span>
@@ -140,4 +140,5 @@
             modalContent.classList.remove('scale-100', 'opacity-100');
         }
     </script>
+
 @endsection
