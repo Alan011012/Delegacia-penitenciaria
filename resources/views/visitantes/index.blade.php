@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="mt-9 text-3xl text-white font-semibold mb-6">Lista de Visitantes</h2>
 
-    <a href="{{ route('visitantes.create') }}" class="mt-3 inline-block text-white py-2 px-4 rounded-lg bg-gray-600 transition duration-300">
+    <a href="{{ route('visitantes.create') }}" class="mt-3 inline-block text-white py-2 px-4 rounded-lg bg-gray-600 hover:bg-yellow-600 transition duration-300">
         Adicionar Novo Visitante
     </a>
 

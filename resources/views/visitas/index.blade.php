@@ -4,7 +4,7 @@
 
     <h2 class="mt-9 text-3xl text-white font-semibold mb-6">Lista de Visitas</h2>
 
-    <a href="{{ route('visitas.create') }}" class="mt-3 inline-block bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-300">
+    <a href="{{ route('visitas.create') }}" class="mt-3 inline-block bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 hover:bg-yellow-600 transition duration-300">
         Agendar Nova Visita
     </a>
 
