@@ -9,6 +9,19 @@
         Adicionar Novo Preso
     </a>
 
+    @if (session('success'))
+        <div id="successModal"
+            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 transform transition-all duration-500 scale-75 opacity-0">
+                <h3 class="text-xl font-semibold text-white mb-4">{{ session('success') }}</h3>
+                <div class="flex justify-center">
+                    <button onclick="closeSuccessModal()"
+                        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Fechar</button>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="overflow-x-auto mt-8">
         <table class="min-w-full bg-black text-white rounded-lg shadow-xl overflow-hidden">
             <thead class="bg-gray-600 text-white">
@@ -68,22 +81,8 @@
                     </tr>
                 @endforeach
             </tbody>
-
         </table>
     </div>
-
-    @if (session('success'))
-        <div id="successModal"
-            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
-            <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 transform transition-all duration-500 scale-75 opacity-0">
-                <h3 class="text-xl font-semibold text-white mb-4">Preso Cadastrado com Sucesso!</h3>
-                <div class="flex justify-center">
-                    <button onclick="closeSuccessModal()"
-                        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Fechar</button>
-                </div>
-            </div>
-        </div>
-    @endif
 
     <div id="deleteModal"
         class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">

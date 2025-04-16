@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class PresoController extends Controller
 {
-
     public function index()
     {
         $presos = Preso::all();
@@ -34,6 +33,8 @@ class PresoController extends Controller
         $preso->cela_id = $request->cela_id;
         $preso->save();
 
+        session()->flash('success', 'Preso cadastrado com sucesso!');
+        
         return redirect()->route('presos.index');
     }
 
@@ -57,6 +58,8 @@ class PresoController extends Controller
             'cela_id' => $request->cela_id,
         ]);
 
+        session()->flash('success', 'Preso atualizado com sucesso!');
+
         return redirect()->route('presos.index');
     }
 
@@ -64,9 +67,13 @@ class PresoController extends Controller
     {
         $preso = Preso::find($id);
 
-        $preso->delete();
+        if ($preso) {
+            $preso->delete();
+            session()->flash('success', 'Preso excluído com sucesso!');
+        } else {
+            session()->flash('error', 'Preso não encontrado!');
+        }
 
         return redirect()->route('presos.index');
     }
-    }
-
+}
