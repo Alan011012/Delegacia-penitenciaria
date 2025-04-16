@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCelas;
 use App\Models\Cela;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class CelaController extends Controller
         return view('celas.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreCelas $request)
     {
         $request->validate([
             'nome' => 'required',
@@ -35,7 +36,7 @@ class CelaController extends Controller
         return view('celas.edit', compact('cela'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreCelas $request, $id)
     {
         $request->validate([
             'nome' => 'required',

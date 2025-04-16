@@ -18,7 +18,7 @@
                 value="{{ old('nome') }}"
                 class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-indigo-500 transition duration-200
                 @error('nome') border-red-500 @else border-gray-600 @enderror"
-                required>
+            >
             @error('nome')
                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
             @enderror
@@ -34,7 +34,7 @@
                 value="{{ old('capacidade') }}"
                 class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-indigo-500 transition duration-200
                 @error('capacidade') border-red-500 @else border-gray-600 @enderror"
-                required>
+                >
             @error('capacidade')
                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
             @enderror
