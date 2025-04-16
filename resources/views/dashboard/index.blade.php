@@ -81,7 +81,7 @@
         <div class="flex-1 ml-64 h-screen bg-gray-800 p-5 pt-16 overflow-y-auto border-l border-gray-700">
             <div class="bg-gray-700 overflow-hidden shadow-xl sm:rounded-lg transition-shadow duration-300">
                 <div class="p-6 text-gray-900">
-                    <h2 class="text-4xl font-extrabold text-white mb-6">{{ __("Você está logado!") }}</h2>
+                    <h2 class="text-4xl font-extrabold text-white mb-6">{{ __("Painel Administrativo") }}</h2>
                     <p class="text-lg text-gray-400 mb-8">Bem-vindo ao painel administrativo da delegacia. Aqui você
                         pode gerenciar todas as informações importantes com eficiência e rapidez.</p>
 
