@@ -43,45 +43,53 @@
         </table>
     </div>
 
-    <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden flex items-center justify-center z-50">
-        <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 transform transition-all duration-500 scale-75 opacity-0">
+    <!-- Modal de Exclusão -->
+    <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden flex items-center justify-center z-50 transition duration-300">
+        <div id="modalContent" class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 transform transition duration-300 opacity-0 scale-95">
             <h3 class="text-lg font-semibold text-white">Tem certeza que deseja excluir esta visita?</h3>
             <div class="mt-4 flex justify-between">
-                <button onclick="closeDeleteModal()" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">Cancelar</button>
+                <button onclick="closeDeleteModal()" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                    Cancelar
+                </button>
                 <form id="deleteForm" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Excluir</button>
+                    <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                        Excluir
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
         function openDeleteModal(visitaId) {
             const modal = document.getElementById('deleteModal');
-            const modalContent = modal.querySelector('div');
+            const modalContent = document.getElementById('modalContent');
 
             document.getElementById('deleteForm').action = '/visitas/' + visitaId;
 
             modal.classList.remove('hidden');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.classList.add('opacity-100', 'pointer-events-auto');
-            modalContent.classList.remove('scale-75', 'opacity-0');
-            modalContent.classList.add('scale-100', 'opacity-100');
+            modal.classList.add('flex');
+
+            setTimeout(() => {
+                modalContent.classList.remove('opacity-0', 'scale-95');
+                modalContent.classList.add('opacity-100', 'scale-100');
+            }, 50);
         }
 
         function closeDeleteModal() {
             const modal = document.getElementById('deleteModal');
-            const modalContent = modal.querySelector('div');
+            const modalContent = document.getElementById('modalContent');
 
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.classList.remove('opacity-100', 'pointer-events-auto');
-            modalContent.classList.add('scale-75', 'opacity-0');
-            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            modalContent.classList.add('opacity-0', 'scale-95');
 
-            setTimeout(function() {
+            setTimeout(() => {
+                modal.classList.remove('flex');
                 modal.classList.add('hidden');
+            }, 300);
         }
     </script>
 
