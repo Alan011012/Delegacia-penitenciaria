@@ -9,48 +9,75 @@
 
         <div class="grid grid-cols-2 gap-6">
             <div>
-                <label for="nome" class="block text-white font-semibold mb-2">Nome</label>
+                <label for="nome" class="block text-white font-semibold mb-2">
+                    Nome <span class="text-red-500">*</span>
+                </label>
                 <input type="text" name="nome" id="nome" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('nome') border border-red-500 @enderror
                     @if(old('nome', $preso->nome) && !$errors->has('nome')) border border-green-500 @endif"
                     value="{{ old('nome', $preso->nome) }}" required>
+                @error('nome')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
             <div>
-                <label for="documento_identidade" class="block text-white font-semibold mb-2">Documento de Identidade</label>
+                <label for="documento_identidade" class="block text-white font-semibold mb-2">
+                    Documento de Identidade <span class="text-red-500">*</span>
+                </label>
                 <input type="text" name="documento_identidade" id="documento_identidade" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('documento_identidade') border border-red-500 @enderror
                     @if(old('documento_identidade', $preso->documento_identidade) && !$errors->has('documento_identidade')) border border-green-500 @endif"
                     value="{{ old('documento_identidade', $preso->documento_identidade) }}" required>
+                @error('documento_identidade')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 
         <div class="grid grid-cols-2 gap-6">
             <div>
-                <label for="data_nascimento" class="block text-white font-semibold mb-2">Data de Nascimento</label>
+                <label for="data_nascimento" class="block text-white font-semibold mb-2">
+                    Data de Nascimento <span class="text-red-500">*</span>
+                </label>
                 <input type="date" name="data_nascimento" id="data_nascimento" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('data_nascimento') border border-red-500 @enderror
                     @if(old('data_nascimento', $preso->data_nascimento) && !$errors->has('data_nascimento')) border border-green-500 @endif"
                     value="{{ old('data_nascimento', $preso->data_nascimento) }}" required>
+                @error('data_nascimento')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
             <div>
-                <label for="crime" class="block text-white font-semibold mb-2">Crime</label>
+                <label for="crime" class="block text-white font-semibold mb-2">
+                    Crime <span class="text-red-500">*</span>
+                </label>
                 <input type="text" name="crime" id="crime" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('crime') border border-red-500 @enderror
                     @if(old('crime', $preso->crime) && !$errors->has('crime')) border border-green-500 @endif"
                     value="{{ old('crime', $preso->crime) }}" required>
+                @error('crime')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 
         <div class="grid grid-cols-2 gap-6">
             <div>
-                <label for="data_condenacao" class="block text-white font-semibold mb-2">Data de Condenação</label>
+                <label for="data_condenacao" class="block text-white font-semibold mb-2">
+                    Data de Condenação <span class="text-red-500">*</span>
+                </label>
                 <input type="date" name="data_condenacao" id="data_condenacao" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('data_condenacao') border border-red-500 @enderror
                     @if(old('data_condenacao', $preso->data_condenacao) && !$errors->has('data_condenacao')) border border-green-500 @endif"
                     value="{{ old('data_condenacao', $preso->data_condenacao) }}" required>
+                @error('data_condenacao')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
             <div>
-                <label for="status" class="block text-white font-semibold mb-2">Status</label>
+                <label for="status" class="block text-white font-semibold mb-2">
+                    Status <span class="text-red-500">*</span>
+                </label>
                 <select name="status" id="status" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                     @error('status') border border-red-500 @enderror
                     @if(old('status', $preso->status) && !$errors->has('status')) border border-green-500 @endif" required>
@@ -58,21 +85,29 @@
                     <option value="Liberado" {{ $preso->status == 'Liberado' ? 'selected' : '' }}>Liberado</option>
                     <option value="Fugido" {{ $preso->status == 'Fugido' ? 'selected' : '' }}>Fugido</option>
                 </select>
+                @error('status')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 
         <div class="mb-6">
-            <label for="cela_id" class="block text-white font-semibold mb-2">Cela</label>
+            <label for="cela_id" class="block text-white font-semibold mb-2">
+                Cela <span class="text-red-500">*</span>
+            </label>
             <select name="cela_id" id="cela_id" class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md transition duration-200
                 @error('cela_id') border border-red-500 @enderror
                 @if(old('cela_id', $preso->cela_id) && !$errors->has('cela_id')) border border-green-500 @endif" required>
-                <option value="" disabled selected>Selecione a Cela</option>
+                <option value="" disabled>Selecione a Cela</option>
                 @foreach ($celas as $cela)
                     <option value="{{ $cela->id }}" {{ $cela->id == $preso->cela_id ? 'selected' : '' }}>
                         {{ $cela->nome }} (Capacidade: {{ $cela->capacidade }})
                     </option>
                 @endforeach
             </select>
+            @error('cela_id')
+                <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mt-6 flex justify-between">

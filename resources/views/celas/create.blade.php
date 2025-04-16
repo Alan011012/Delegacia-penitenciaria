@@ -10,13 +10,16 @@
 
         <!-- Nome da Cela -->
         <div>
-            <label for="nome" class="block text-gray-300 font-semibold mb-2">Nome da Cela</label>
+            <label for="nome" class="block text-gray-300 font-semibold mb-2">
+                Nome da Cela <span class="text-red-500">*</span>
+            </label>
             <input
                 type="text"
                 name="nome"
                 id="nome"
                 value="{{ old('nome') }}"
-                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-indigo-500 transition duration-200
+                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white border
+                focus:ring-2 focus:ring-indigo-500 transition duration-200
                 @error('nome') border-red-500 @else border-gray-600 @enderror"
             >
             @error('nome')
@@ -26,15 +29,18 @@
 
         <!-- Capacidade -->
         <div>
-            <label for="capacidade" class="block text-gray-300 font-semibold mb-2">Capacidade</label>
+            <label for="capacidade" class="block text-gray-300 font-semibold mb-2">
+                Capacidade <span class="text-red-500">*</span>
+            </label>
             <input
                 type="number"
                 name="capacidade"
                 id="capacidade"
                 value="{{ old('capacidade') }}"
-                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-indigo-500 transition duration-200
+                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white border
+                focus:ring-2 focus:ring-indigo-500 transition duration-200
                 @error('capacidade') border-red-500 @else border-gray-600 @enderror"
-                >
+            >
             @error('capacidade')
                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
             @enderror
@@ -42,12 +48,15 @@
 
         <!-- Descrição -->
         <div class="col-span-2">
-            <label for="descricao" class="block text-gray-300 font-semibold mb-2">Descrição</label>
+            <label for="descricao" class="block text-gray-300 font-semibold mb-2">
+                Descrição <span class="text-red-500">*</span>
+            </label>
             <textarea
                 name="descricao"
                 id="descricao"
                 rows="4"
-                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-indigo-500 transition duration-200
+                class="mt-2 p-4 w-full rounded-md bg-gray-700 text-white border
+                focus:ring-2 focus:ring-indigo-500 transition duration-200
                 @error('descricao') border-red-500 @else border-gray-600 @enderror">{{ old('descricao') }}</textarea>
             @error('descricao')
                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>

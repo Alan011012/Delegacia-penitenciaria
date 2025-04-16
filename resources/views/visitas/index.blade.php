@@ -25,7 +25,10 @@
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $visita->id }}</td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $visita->preso->nome }}</td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $visita->visitante->nome }}</td>
-                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">{{ $visita->data_visita->format('d/m/Y H:i') }}</td>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
+                            <!-- Exibe a data como está no banco sem alterações -->
+                            {{ $visita->data_visita->format('d/m/Y H:i') }}
+                        </td>
                         <td class="px-6 py-4 text-sm whitespace-nowrap bg-gray-800">
                             <div class="flex space-x-4">
                                 <a href="{{ route('visitas.edit', $visita->id) }}" class="text-blue-500 hover:text-blue-700 font-semibold transition duration-300">

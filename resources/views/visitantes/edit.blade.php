@@ -9,13 +9,31 @@
 
         <div class="grid grid-cols-2 gap-6">
             <div>
-                <label for="nome" class="block text-white font-semibold mb-2">Nome</label>
-                <input type="text" id="nome" name="nome" value="{{ $visitante->nome }}" class="mt-2 p-4 w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500" required>
+                <label for="nome" class="block text-white font-semibold mb-2">
+                    Nome <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="nome" name="nome"
+                    class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-indigo-500 transition duration-200
+                    @error('nome') border border-red-500 @enderror
+                    @if(old('nome', $visitante->nome) && !$errors->has('nome')) border border-green-500 @else border border-gray-600 @endif"
+                    value="{{ old('nome', $visitante->nome) }}" required>
+                @error('nome')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
 
             <div>
-                <label for="documento_identidade" class="block text-white font-semibold mb-2">Documento de Identidade</label>
-                <input type="text" id="documento_identidade" name="documento_identidade" value="{{ $visitante->documento_identidade }}" class="mt-2 p-4 w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500" required>
+                <label for="documento_identidade" class="block text-white font-semibold mb-2">
+                    Documento de Identidade <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="documento_identidade" name="documento_identidade"
+                    class="mt-2 p-4 w-full bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-indigo-500 transition duration-200
+                    @error('documento_identidade') border border-red-500 @enderror
+                    @if(old('documento_identidade', $visitante->documento_identidade) && !$errors->has('documento_identidade')) border border-green-500 @else border border-gray-600 @endif"
+                    value="{{ old('documento_identidade', $visitante->documento_identidade) }}" required>
+                @error('documento_identidade')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 

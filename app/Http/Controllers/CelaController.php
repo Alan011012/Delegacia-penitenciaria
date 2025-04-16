@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCelas;
+use App\Http\Requests\StoreUpdateCela;
 use App\Models\Cela;
-use Illuminate\Http\Request;
 
 class CelaController extends Controller
 {
@@ -18,13 +18,8 @@ class CelaController extends Controller
         return view('celas.create');
     }
 
-    public function store(StoreCelas $request)
+    public function store(StoreUpdateCela $request)
     {
-        $request->validate([
-            'nome' => 'required',
-            'descricao' => 'required',
-        ]);
-
         Cela::create($request->all());
 
         return redirect()->route('celas.index')->with('success', 'Cela cadastrada com sucesso!');
@@ -32,18 +27,13 @@ class CelaController extends Controller
 
     public function edit($id)
     {
-        $cela = Cela::find($id);
+        $cela = Cela::findOrFail($id);
         return view('celas.edit', compact('cela'));
     }
 
-    public function update(StoreCelas $request, $id)
+    public function update(StoreUpdateCela $request, $id)
     {
-        $request->validate([
-            'nome' => 'required',
-            'descricao' => 'required',
-        ]);
-
-        $cela = Cela::find($id);
+        $cela = Cela::findOrFail($id);
         $cela->update($request->all());
 
         return redirect()->route('celas.index')->with('success', 'Cela atualizada com sucesso!');
@@ -51,7 +41,7 @@ class CelaController extends Controller
 
     public function destroy($id)
     {
-        $cela = Cela::find($id);
+        $cela = Cela::findOrFail($id);
         $cela->delete();
 
         return redirect()->route('celas.index')->with('success', 'Cela excluída com sucesso!');

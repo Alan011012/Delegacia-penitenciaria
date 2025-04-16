@@ -7,6 +7,19 @@
         Adicionar Novo Visitante
     </a>
 
+    @if (session('success'))
+        <div id="successModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 transform transition-all duration-500 scale-75 opacity-0">
+                <h3 class="text-xl font-semibold text-white mb-4">{{ session('success') }}</h3>
+                <div class="flex justify-center">
+                    <button onclick="closeSuccessModal()" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="overflow-x-auto mt-8">
         <table class="min-w-full bg-black text-white rounded-lg shadow-lg overflow-hidden">
             <thead class="bg-gray-600 text-white rounded-t-lg">
@@ -71,6 +84,15 @@
     </div>
 
     <script>
+        @if(session('success'))
+            const successModal = document.getElementById('successModal');
+            const successModalContent = successModal.querySelector('div');
+            successModal.classList.remove('opacity-0', 'pointer-events-none');
+            successModal.classList.add('opacity-100', 'pointer-events-auto');
+            successModalContent.classList.remove('scale-75', 'opacity-0');
+            successModalContent.classList.add('scale-100', 'opacity-100');
+        @endif
+
         // Função para abrir o modal de exclusão
         function openDeleteModal(visitanteId) {
             const modal = document.getElementById('deleteModal');
@@ -79,6 +101,7 @@
             modal.classList.add('opacity-100', 'pointer-events-auto');
             modalContent.classList.remove('scale-75', 'opacity-0');
             modalContent.classList.add('scale-100', 'opacity-100');
+
             const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
             confirmDeleteBtn.onclick = function() {
                 document.getElementById('delete-form-' + visitanteId).submit();
@@ -97,13 +120,12 @@
 
         // Função para fechar o modal de sucesso
         function closeSuccessModal() {
-            const modal = document.getElementById('successModal');
-            const modalContent = modal.querySelector('div');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.classList.remove('opacity-100', 'pointer-events-auto');
-            modalContent.classList.add('scale-75', 'opacity-0');
-            modalContent.classList.remove('scale-100', 'opacity-100');
+            const successModal = document.getElementById('successModal');
+            const successModalContent = successModal.querySelector('div');
+            successModal.classList.add('opacity-0', 'pointer-events-none');
+            successModal.classList.remove('opacity-100', 'pointer-events-auto');
+            successModalContent.classList.add('scale-75', 'opacity-0');
+            successModalContent.classList.remove('scale-100', 'opacity-100');
         }
     </script>
-
 @endsection

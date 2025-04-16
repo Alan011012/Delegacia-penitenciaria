@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Preso;
 use App\Models\Cela;
-use Illuminate\Http\Request;
 
 class PresoController extends Controller
 {
@@ -34,20 +33,20 @@ class PresoController extends Controller
         $preso->save();
 
         session()->flash('success', 'Preso cadastrado com sucesso!');
-        
         return redirect()->route('presos.index');
     }
 
     public function edit($id)
     {
-        $preso = Preso::find($id);
+        $preso = Preso::findOrFail($id);
         $celas = Cela::all();
         return view('presos.edit', compact('preso', 'celas'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdateSupport $request, $id)
     {
-        $preso = Preso::find($id);
+        $preso = Preso::findOrFail($id);
+
         $preso->update([
             'nome' => $request->nome,
             'documento_identidade' => $request->documento_identidade,
@@ -59,7 +58,6 @@ class PresoController extends Controller
         ]);
 
         session()->flash('success', 'Preso atualizado com sucesso!');
-
         return redirect()->route('presos.index');
     }
 

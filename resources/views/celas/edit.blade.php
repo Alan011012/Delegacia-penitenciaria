@@ -8,21 +8,64 @@
         @method('PUT')
 
         <div class="grid grid-cols-2 gap-6">
+            <!-- Nome -->
             <div>
-                <label for="nome" class="block text-white font-semibold mb-2">Nome da Cela</label>
-                <input type="text" name="nome" id="nome" class="mt-2 p-4 w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500" value="{{ old('nome', $cela->nome) }}" required>
+                <label for="nome" class="block text-white font-semibold mb-2">
+                    Nome da Cela <span class="text-red-500">*</span>
+                </label>
+                <input
+                    type="text"
+                    name="nome"
+                    id="nome"
+                    class="mt-2 p-4 w-full bg-gray-700 text-white border rounded-md focus:ring-2 focus:ring-indigo-500
+                    @error('nome') border-red-500 @else border-gray-600 @enderror"
+                    value="{{ old('nome', $cela->nome) }}"
+                    required
+                >
+                @error('nome')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
+
+            <!-- Capacidade -->
             <div>
-                <label for="capacidade" class="block text-white font-semibold mb-2">Capacidade</label>
-                <input type="number" name="capacidade" id="capacidade" class="mt-2 p-4 w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500" value="{{ old('capacidade', $cela->capacidade) }}" required>
+                <label for="capacidade" class="block text-white font-semibold mb-2">
+                    Capacidade <span class="text-red-500">*</span>
+                </label>
+                <input
+                    type="number"
+                    name="capacidade"
+                    id="capacidade"
+                    class="mt-2 p-4 w-full bg-gray-700 text-white border rounded-md focus:ring-2 focus:ring-indigo-500
+                    @error('capacidade') border-red-500 @else border-gray-600 @enderror"
+                    value="{{ old('capacidade', $cela->capacidade) }}"
+                    required
+                >
+                @error('capacidade')
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 
+        <!-- Descrição -->
         <div>
-            <label for="descricao" class="block text-white font-semibold mb-2">Descrição</label>
-            <textarea name="descricao" id="descricao" rows="4" class="mt-2 p-4 w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500">{{ old('descricao', $cela->descricao) }}</textarea>
+            <label for="descricao" class="block text-white font-semibold mb-2">
+                Descrição <span class="text-red-500">*</span>
+            </label>
+            <textarea
+                name="descricao"
+                id="descricao"
+                rows="4"
+                class="mt-2 p-4 w-full bg-gray-700 text-white border rounded-md focus:ring-2 focus:ring-indigo-500
+                @error('descricao') border-red-500 @else border-gray-600 @enderror"
+                required
+            >{{ old('descricao', $cela->descricao) }}</textarea>
+            @error('descricao')
+                <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+            @enderror
         </div>
 
+        <!-- Botões -->
         <div class="mt-6 flex justify-between">
             <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
                 Atualizar Cela
